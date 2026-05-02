@@ -1,24 +1,24 @@
-# ⚡ TaskFlow — Team Task Manager
+# TaskFlow - Team Task Manager
 
 A full-stack web application for creating projects, assigning tasks, and tracking progress with role-based access control (Admin/Member).
 
 ![Tech Stack](https://img.shields.io/badge/React-TypeScript-blue?logo=react) ![Backend](https://img.shields.io/badge/FastAPI-Python-green?logo=fastapi) ![DB](https://img.shields.io/badge/PostgreSQL-Database-blue?logo=postgresql) ![Deploy](https://img.shields.io/badge/Railway-Deployed-purple?logo=railway)
 
-## 🚀 Live Demo
+## Live Demo
 
 > **Live URL:** [https://your-app.up.railway.app](https://your-app.up.railway.app)
 
-## ✨ Features
+## Features
 
-- **Authentication** — Signup/Login with JWT tokens (access + refresh)
-- **Projects** — Create, edit, and delete projects
-- **Team Management** — Invite members by email, assign Admin or Member roles
-- **Task Management** — Create, assign, and track tasks with Kanban-style columns (To Do → In Progress → Done)
-- **Dashboard** — Aggregated stats: total projects, tasks by status, overdue count, personal task feed
-- **Role-Based Access Control** — Admins can manage members and delete projects; Members can create/update tasks
-- **Responsive Design** — Dark-themed glassmorphism UI that works on all devices
+- **Authentication** -- Signup/Login with JWT tokens (access + refresh)
+- **Projects** -- Create, edit, and delete projects
+- **Team Management** -- Invite members by email, assign Admin or Member roles
+- **Task Management** -- Create, assign, and track tasks with Kanban-style columns (To Do, In Progress, Done)
+- **Dashboard** -- Aggregated stats: total projects, tasks by status, overdue count, personal task feed
+- **Role-Based Access Control** -- Admins can manage members and delete projects; Members can create/update tasks
+- **Responsive Design** -- Dark-themed glassmorphism UI that works on all devices
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -29,7 +29,7 @@ A full-stack web application for creating projects, assigning tasks, and trackin
 | Auth | JWT (python-jose + bcrypt) |
 | Deployment | Railway |
 
-## 📊 Database Schema
+## Database Schema
 
 ```
 Users ──┐
@@ -38,12 +38,12 @@ Projects ┘                      │
         └──< Tasks >────────────┘
 ```
 
-- **Users** — id, email, username, full_name, hashed_password
-- **Projects** — id, name, description, created_by
-- **ProjectMembers** — project_id, user_id, role (admin/member)
-- **Tasks** — id, title, description, status, priority, project_id, assigned_to, due_date
+- **Users** -- id, email, username, full_name, hashed_password
+- **Projects** -- id, name, description, created_by
+- **ProjectMembers** -- project_id, user_id, role (admin/member)
+- **Tasks** -- id, title, description, status, priority, project_id, assigned_to, due_date
 
-## 🏃 Running Locally
+## Running Locally
 
 ### Prerequisites
 - Python 3.12+
@@ -85,7 +85,7 @@ Open http://localhost:5173
 
 FastAPI auto-generated docs at http://localhost:8000/docs
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description | Access |
 |--------|----------|-------------|--------|
@@ -106,7 +106,7 @@ FastAPI auto-generated docs at http://localhost:8000/docs
 | GET | `/api/dashboard/` | Dashboard stats | Auth |
 | GET | `/api/dashboard/my-tasks` | My tasks | Auth |
 
-## 🚢 Deployment (Railway)
+## Deployment (Railway)
 
 1. Push code to GitHub
 2. Create a new Railway project
@@ -118,7 +118,7 @@ FastAPI auto-generated docs at http://localhost:8000/docs
    - Set build arg: `VITE_API_URL` = backend service URL
 6. Both services deploy automatically on push
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── backend/
@@ -145,6 +145,6 @@ FastAPI auto-generated docs at http://localhost:8000/docs
 └── README.md
 ```
 
-## 👤 Author
+## Author
 
 Narayan Joshi

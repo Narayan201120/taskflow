@@ -67,7 +67,7 @@ export default function DashboardPage() {
         </div>
       )}
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+      <div className="dashboard-grid">
         {/* Recent Projects */}
         <div className="card">
           <div className="card-header">
@@ -77,15 +77,15 @@ export default function DashboardPage() {
           {projects.length === 0 ? (
             <div className="empty-state"><h3>No projects yet</h3><p>Create your first project to get started</p></div>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div className="list-stack">
               {projects.slice(0, 5).map(p => (
-                <div key={p.id} className="task-item" onClick={() => navigate(`/projects/${p.id}`)} style={{ gridTemplateColumns: "1fr auto auto" }}>
+                <div key={p.id} className="list-item" onClick={() => navigate(`/projects/${p.id}`)}>
                   <div>
-                    <div className="task-title">{p.name}</div>
-                    <div className="task-meta">{p.description || "No description"}</div>
+                    <div className="list-item-title">{p.name}</div>
+                    <div className="list-item-sub">{p.description || "No description"}</div>
                   </div>
-                  <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{p.member_count} members</span>
-                  <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{p.task_count} tasks</span>
+                  <span className="text-muted">👥 {p.member_count}</span>
+                  <span className="text-muted">📋 {p.task_count}</span>
                 </div>
               ))}
             </div>
@@ -96,17 +96,20 @@ export default function DashboardPage() {
         <div className="card">
           <div className="card-header">
             <h3 className="card-title">My Tasks</h3>
-            <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{myTasks.length} assigned</span>
+            <span className="text-muted">{myTasks.length} assigned</span>
           </div>
           {myTasks.length === 0 ? (
             <div className="empty-state"><h3>No tasks assigned</h3><p>Tasks assigned to you will appear here</p></div>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div className="list-stack">
               {myTasks.slice(0, 8).map(t => (
-                <div key={t.id} className="task-item" onClick={() => navigate(`/projects/${t.project_id}`)} style={{ gridTemplateColumns: "1fr auto auto" }}>
+                <div key={t.id} className="list-item" onClick={() => navigate(`/projects/${t.project_id}`)}>
                   <div>
-                    <div className="task-title">{t.title}</div>
-                    <div className="task-meta" style={{ color: isOverdue(t.due_date, t.status) ? "var(--danger)" : undefined }}>{formatDate(t.due_date)}</div>
+                    <div className="list-item-title">{t.title}</div>
+                    <div className={`list-item-sub${isOverdue(t.due_date, t.status) ? " overdue" : ""}`}
+                      style={isOverdue(t.due_date, t.status) ? { color: "var(--danger)" } : undefined}>
+                      {formatDate(t.due_date)}
+                    </div>
                   </div>
                   <span className={`badge badge-${t.status}`}>{t.status.replace("_", " ")}</span>
                   <span className={`badge badge-${t.priority}`}>{t.priority}</span>

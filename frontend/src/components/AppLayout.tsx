@@ -29,7 +29,7 @@ export default function AppLayout() {
               <div className="user-email">{user?.email}</div>
             </div>
           </div>
-          <button className="sidebar-link" onClick={handleLogout} style={{ marginTop: "8px", color: "var(--danger)" }}>
+          <button className="sidebar-link logout" onClick={handleLogout}>
             <span>🚪</span> Sign Out
           </button>
         </div>
